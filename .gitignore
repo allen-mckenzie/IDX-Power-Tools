@@ -69,7 +69,7 @@ node_modules
 
 ### Composer ###
 composer.phar
-vendor/
+#vendor/
 
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
@@ -80,3 +80,20 @@ vendor/
 # Other, add your own ignored things here.
 .idea/
 release
+
+# Do not include dev tools
+.vscode
+tests/
+.bowerrc
+.editorconfig
+.eslintrc.js
+.sass-lint.yml
+.travis.yml
+.yo-rc.json
+Dockunit.json
+Gruntfile.js
+Gulpfile.js
+bower.json
+package.json
+phpcs.xml
+phpunit.xml
