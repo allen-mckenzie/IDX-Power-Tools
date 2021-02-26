@@ -129,7 +129,7 @@ final class IDX_Power_Tools {
 	public function plugin_classes() {
 		// $this->plugin_class = new IDXPT_Plugin_Class( $this );
 		$this->idx_power_tools = new IDXPT_Options( $this );
-		//$this->idx_power_tools_lead_tables = new IDXPT_Lead_Table( $this );
+		$this->idx_power_tools_lead_tables = new IDXPT_Lead_Table( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -155,7 +155,8 @@ final class IDX_Power_Tools {
 		if ( ! $this->check_requirements() ) {
 			return;
 		}
-		//$this->idx_power_tools_lead_tables->validate_lead_table();
+		$this->idx_power_tools_lead_tables = new IDXPT_Lead_Table( $this );
+		$this->idx_power_tools_lead_tables->validate_lead_table();
 		// Make sure any rewrite functionality has been loaded.
 		flush_rewrite_rules();
 	}
@@ -184,8 +185,7 @@ final class IDX_Power_Tools {
 
 		// Load translated strings for plugin.
 		load_plugin_textdomain( 'idx-power-tools', false, dirname( $this->basename ) . '/languages/' );
-		include 'includes/class-options.php';
-		include 'includes/class-lead-data.php';
+
 		// Initialize plugin classes.
 		$this->plugin_classes();
 	}
@@ -285,6 +285,7 @@ final class IDX_Power_Tools {
 				return self::VERSION;
 			case 'basename':
 			case 'url':
+			case 'idx_power_tools_lead_tables':
 			case 'path':
 				return $this->$field;
 			default:
